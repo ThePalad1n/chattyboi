@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #440255;
-	--dark-color-b: #510061;
-	--light-color: #bd02d6;
+	--dark-color-a: #08000a;
+	--dark-color-b: #000000;
+	--light-color: #ccda0c;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
@@ -17,7 +17,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	background: var(--light-color);
+	background: var(--dark-color-b);
 	margin: 20px;
 }
 
@@ -43,14 +43,17 @@ a {
 .chat-container {
 	max-width: 1100px;
 	max-height: 1200px;
-	background: rgb(172, 172, 172);
+	background: rgb(65, 64, 64);
 	margin: 30px auto;
 	overflow: hidden;
+	outline: 2px;
+	outline-style: ridge;
+	outline-color: var(--light-color);
 }
 
 .chat-header {
 	background: var(--dark-color-a);
-	color: rgb(172, 172, 172);
+	color: var(--light-color);;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding: 15px;
@@ -182,9 +185,66 @@ a {
 @media (max-width: 700px) {
 	.chat-main {
 		display: block;
-	}
-
+	}	
 	.chat-sidebar {
 		display: none;
 	}
+}
+
+
+#scrollPath
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: rgba(255,255,255,0.05);
+}
+
+#progressbar
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    background: linear-gradient(to top, #000000, #ccda0c);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate
+{
+    0%, 100%
+    {
+        filter: hue-rotate(0deg);
+    }
+    50%
+    {
+        filter: hue-rotate(0deg);
+    }
+
+}
+
+#progressbar:before
+{
+    content: 'chat-container';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000000, #ccda0c);
+    filter: blur(10px)
+}
+
+#progressbar:after
+{
+    content: 'chat-container';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000000, #ccda0c);
+    filter: blur(30px)
 }
